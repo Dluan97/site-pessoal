@@ -1,0 +1,22 @@
+/* Estilos gerais da pagina */
+body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+    background-color: #f9f9f9;
+    color: #333;
+}
+/* Estilo do cabeçalho */
+header {
+    background-color: #0077cc;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+/*Espaçamento entre seções */
+section{
+    margin-top: 2rem;
+}
+/* Título das seções */
+h2 {
+    color: #0077cc;
+}
