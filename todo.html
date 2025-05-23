@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Minha Lista de Tarefas</h1>
+
+  <input type="text" id="new-input" placeholder=" Digite uma nova tarefa" />
+  <button onclick="addTask()">Adicionar</button>
+
+  <ul id="task-list"></ul>
+
+  <p>Total de tarefas: <span id="counter">0</span></p>
+
+  <script>
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        function saveTasks() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    function updateCounter() {
+        document.getElementById('counter').textContent = tasks.length;
+    }
+
+    function renderTasks() {
+      const taskList = document.getElementById('task-list');
+      taskList.innerHTML = '';
+
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+
+//Criar checkbox
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = task.completed;
+
+// Ao mudar o checkbox, atualiza o status
+        checkbox.addEventListener('change', () => {
+        tasks[index].completed = checkbox.checked;
+        saveTasks();
+        renderTasks();
+    });
+
+         // Texto da tarefa
+        const span = document.createElement('span');
+        span.textContent = task.text;
+
+        if (task.completed) {
+        span.classList.add('completed');
+  }
+
+        // Botão editar
+        const editBtn = document.createElement('button');
+        editBtn.textContent = 'Editar';
+        editBtn.onclick = () => {
+          const newText = prompt('Edite a tarefa:', task.text);
+          if (newText !== null && newText.trim() !== '') {
+            tasks[index].text = newText.trim();
+            saveTasks();
+            renderTasks();
+          }
+        };
+
+        // Botão remover
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remover';
+        removeBtn.onclick = () => {
+          tasks.splice(index, 1);
+          saveTasks();
+          renderTasks();
+        };
+
+        li.appendChild(checkbox);
+        li.appendChild(span);
+        li.appendChild(editBtn);
+        li.appendChild(removeBtn);
+
+        taskList.appendChild(li);
+      });
+
+      updateCounter();
+    }
+
+    function addTask() {
+        const input = document.getElementById('new-input');
+        const text = input.value.trim();
+
+        if(text !== '') {
+            tasks.push({ text, completed: false });
+            saveTasks();
+            renderTasks();
+            input.value = '';
+        }
+    }
+    function updateCounter() {
+        document.getElementById('counter').textContent = tasks.length;
+    }
+
+    // Inicializa a lista quando a página carrega
+    renderTasks();
+  </script>
+</body>
+</html>
