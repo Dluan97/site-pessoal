@@ -40,58 +40,8 @@
             <p>Email: dluanlopes9@gmail.com</p>
             <p>GitHub: github.com/Dluan97</p>
         </section>
-        <script>
-  // Lista de projetos
-  const projetos = [
-    {
-      titulo: "Portfólio Pessoal",
-      descricao: "Site pessoal com HTML, CSS e JavaScript",
-    },
-    {
-      titulo: "Loja Online Simples",
-      descricao: "Site de e-commerce fictício com catálogo de produtos",
-    },
-    {
-      titulo: "Formulário Interativo",
-      descricao: "Formulário com validação em JavaScript",
-    },
-    {
-        titulo: "To-Do-List",
-        descricao: "Aplicação para gerenciar tarefas, com salvamento local.",
-        link: "projetos/todo-list/index.html"
-    }
-  ];
-
-  // Função para exibir os projetos na tela
-
-  function mostrarProjetos(filtro = "") {
-    const container = document.getElementById("projetos-container");
-    container.innerHTML = ""; // Limpa antes de mostrar
-
-    projetos.filter(projeto => projeto.titulo.toLowerCase().includes(filtro.toLowerCase()))
-
-            .forEach(projeto => {
-                const div = document.createElement("div");
-             div.classList.add("projeto");
-              div.innerHTML = `
-                <h3>${projeto.titulo}</h3>
-                <p>${projeto.descricao}</p>
-                ${projeto.link ? `<a href="${projeto.link}" target="_blank">Ver projeto</a>` : ""}
-                `;
-            container.appendChild(div);
-            } );
-        }
-  
-    // Filtro ao digitar
-
-    const inputFiltro = document.getElementById("filtro");
-    inputFiltro.addEventListener("input",() => {
-        mostrarProjetos(inputFiltro.value);
-    });
-
-    //Mostrar todos ao carregar
-    mostrarProjetos();
-</script>
+        <script src="data.js"></script>
+        <script src="main.js"></script>
 
     </body>
 </html>
