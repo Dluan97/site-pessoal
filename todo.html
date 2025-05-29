@@ -11,10 +11,28 @@
   <h1>Minha Lista de Tarefas</h1>
 
   <input type="text" id="new-input" placeholder=" Digite uma nova tarefa" />
+  
+  <select id="category-select">
+    <option value="Estudos">Estudos</option>
+    <option value="Trabalho">Trabalho</option>
+    <option value="Pessoal">Pessoal</option>
+  </select>
+
   <button onclick="addTask()">Adicionar</button>
+
+  <br><br>
+
+  <label for="filter-category">Filtrar:</label>
+  <select id="filter-category">
+    <option value="Todas">Todas</option> 
+    <option value="Estudos">Estudos</option>
+    <option value="Trabalho">Trabalho</option>
+    <option value="Pessoal">Pessoal</option>
+  </select>
 
   <ul id="task-list"></ul>
 
+  <p id="no-tasks" style="display: none; color:gray;">Nenhuma tarefa encontrada</p>
   <p>Total de tarefas: <span id="counter">0</span></p>
 
   <script>
@@ -24,32 +42,56 @@
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
-    function updateCounter() {
-        document.getElementById('counter').textContent = tasks.length;
+        function addTask() {
+        const input = document.getElementById('new-input');
+        const category = document.getElementById('category-select').value;
+        const text = input.value.trim();
+
+        if(text !== '') {
+            tasks.push({ text, completed: false, category });
+            saveTasks();
+            renderTasks();
+            input.value = '';
+        }
     }
 
     function renderTasks() {
-      const taskList = document.getElementById('task-list');
-      taskList.innerHTML = '';
 
-      tasks.forEach((task, index) => {
+      const taskList = document.getElementById('task-list');
+      taskList.innerHTML = ''; // limpar antes de renderizar de novo
+      const filter = document.getElementById('filter-category').value;
+      const noTasks = document.getElementById('no-tasks');
+
+      const filteredTasks = tasks.filter(task =>
+        filter === 'Todas' || task.category === filter 
+      );
+
+      if (filteredTasks.length === 0) {
+        noTasks.style.display = 'block';
+      } else {
+        noTasks.style.display = 'none';
+      }
+
+      filteredTasks.forEach((task) => {
         const li = document.createElement('li');
 
 //Criar checkbox
+
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = task.completed;
 
 // Ao mudar o checkbox, atualiza o status
+
         checkbox.addEventListener('change', () => {
-        tasks[index].completed = checkbox.checked;
+        task.completed = checkbox.checked;
         saveTasks();
         renderTasks();
     });
 
          // Texto da tarefa
         const span = document.createElement('span');
-        span.textContent = task.text;
+        span.textContent = `${task.text} [${task.category}]`;
 
         if (task.completed) {
         span.classList.add('completed');
@@ -61,20 +103,28 @@
         editBtn.onclick = () => {
           const newText = prompt('Edite a tarefa:', task.text);
           if (newText !== null && newText.trim() !== '') {
-            tasks[index].text = newText.trim();
+            task.text = newText.trim();
             saveTasks();
             renderTasks();
           }
         };
 
         // Botão remover
-        const removeBtn = document.createElement('button');
-        removeBtn.textContent = 'Remover';
+        const removeBtn= document.createElement('button');
+        removeBtn.textContent = 'Remover' ;
         removeBtn.onclick = () => {
-          tasks.splice(index, 1);
-          saveTasks();
-          renderTasks();
-        };
+          const index = tasks.findIndex(t =>
+            t.text === task.text &&
+            t.category === task.category &&
+            t.completed === task.completed
+          );
+          
+          if (index > -1) {
+            tasks.splice(index, 1);
+            saveTasks();
+            renderTasks();
+          }
+      };
 
         li.appendChild(checkbox);
         li.appendChild(span);
@@ -84,23 +134,16 @@
         taskList.appendChild(li);
       });
 
-      updateCounter();
+      updateCounter(filteredTasks.length);
     }
 
-    function addTask() {
-        const input = document.getElementById('new-input');
-        const text = input.value.trim();
+    function updateCounter(count) {
+        document.getElementById('counter').textContent = count;
+    }
 
-        if(text !== '') {
-            tasks.push({ text, completed: false });
-            saveTasks();
-            renderTasks();
-            input.value = '';
-        }
-    }
-    function updateCounter() {
-        document.getElementById('counter').textContent = tasks.length;
-    }
+    document.getElementById('filter-category').addEventListener('change', () => {
+      renderTasks();
+    });
 
     // Inicializa a lista quando a página carrega
     renderTasks();

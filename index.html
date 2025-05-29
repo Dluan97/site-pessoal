@@ -54,6 +54,11 @@
     {
       titulo: "Formulário Interativo",
       descricao: "Formulário com validação em JavaScript",
+    },
+    {
+        titulo: "To-Do-List",
+        descricao: "Aplicação para gerenciar tarefas, com salvamento local.",
+        link: "projetos/todo-list/index.html"
     }
   ];
 
@@ -70,7 +75,9 @@
              div.classList.add("projeto");
               div.innerHTML = `
                 <h3>${projeto.titulo}</h3>
-                <p>${projeto.descricao}</p>`;
+                <p>${projeto.descricao}</p>
+                ${projeto.link ? `<a href="${projeto.link}" target="_blank">Ver projeto</a>` : ""}
+                `;
             container.appendChild(div);
             } );
         }
