@@ -1,69 +1,55 @@
 /* Estilos gerais da pagina */
-body {
-    font-family: Arial, sans-serif;
-    margin: 2rem;
-    background-color: #f9f9f9;
-    color: #333;
-}
-/* Estilo do cabeçalho */
-header {
-    background-color: #0077cc;
-    color: white;
-    padding: 1rem;
-    border-radius: 8px;
-}
-/*Espaçamento entre seções */
-section{
-    margin-top: 2rem;
-}
-/* Título das seções */
-h2 {
-    color: #0077cc;
-}
-.cards-habilidades {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 10px;
-}
 
-.card {
-    background-color: #f8f8f8;
-    padding: 20px;
-    flex: 1 1 calc(50% - 20px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 8px;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    background-color: #e0ffe5;
-    transition: all 0.3s ease;
-}
-
-#filtro {
-        padding: 8px;
-        width: 100%;
-        max-width: 300px;
-        margin: 20px auto;
-        display: block;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-}
+/* Melhorando os cards de projetos */
 
 .projeto {
-    background-color: #f9f9f9;
-    padding: 12px;
-    margin: 10px auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    max-width: 600px;
-    box-shadow: 1px 1px 6px rgba(0,0,0,0.05);
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 15px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+    
 }
 
-    
-    
+.projeto:hover {
+    transform: translateY(-5px);
+    background-color: #e6f7ff;
+}
+
+/* Melhorando cabeçalho */
+header {
+    background: linear-gradient(90deg, #0077cc, #005fa3)
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+/* Fonte e espaçamento */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Botão de filtro*/
+#filtro {
+        padding: 10px;
+        border-radius: 8%;
+        border: 1px solid #ccc;
+        margin-top: 1rem;
+        
+}
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    .cards-habilidades {
+        flex-direction: column;
+    }
+    .card {
+        flex: 1 1 100%;
+    }
+}
+
     /* ==== Estilos do To-Do List ==== */
 
 #task-list {
