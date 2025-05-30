@@ -77,7 +77,40 @@ body {
     }
 }
 
-    /* ==== Estilos do To-Do List ==== */
+
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005fa3;
+}
+  
+
+/* ==== Estilos do To-Do List ==== */
 
 #task-list {
     list-style: none;
