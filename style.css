@@ -1,27 +1,5 @@
 /* Estilos gerais da pagina */
 
-/* Melhorando os cards de projetos */
-
-.projeto {
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 15px auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
-    
-}
-
-.projeto:hover {
-    transform: translateY(-5px);
-    background-color: #e6f7ff;
-}
-
-/* Melhorando cabeçalho */
-header {
-  text-align: center;
-}
-
 /* Fonte e espaçamento */
 body {
   font-family: Arial, sans-serif;
@@ -29,31 +7,36 @@ body {
   background: #f9f9f9;
 }
 
-/* Botão de filtro*/
-#filtro {
-        padding: 10px;
-        border-radius: 8%;
-        border: 1px solid #ccc;
-        margin-top: 1rem;
-        
+/* Melhorando cabeçalho */
+header {
+  text-align: center;
 }
 
-/* Responsividade */
+/* Melhorando os cards de projetos */
 
-@media (max-width: 768px) {
-    .cards-habilidades {
-        flex-direction: column;
-    }
-    .card {
-        flex: 1 1 100%;
-    }
+.cards-habilidades {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
+.card {
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
 
+.meus-projetos {
+  margin-top: 20px;
+}
 
-.card:hover {
-    transform: scale(1.05);
-    background-color: #e0ffe5;
+.projeto {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 .fade-in {
@@ -65,6 +48,17 @@ body {
   to { opacity: 1; }
 }
 
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    .cards-habilidades {
+        flex-direction: column;
+    }
+    .card {
+        flex: 1 1 100%;
+    }
+}
 
 form {
     max-width: 600px;
