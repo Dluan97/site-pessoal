@@ -6,6 +6,7 @@ const projetos = [
     titulo: "Portfólio Pessoal",
     descricao: "Site pessoal com HTML, CSS e JavaScript",
     detalhes: "Este é meu projeto pessoal, onde pratico HTML, CSS e JS."
+    link: "projetos/portfolio/index.html"
   },
   {
     titulo: "Loja Online Simples",
