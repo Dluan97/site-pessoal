@@ -10,10 +10,7 @@ function mostrarProjetos(filtro = "") {
   projetos
     .filter(projeto => 
       // Normaliza também o título do projeto antes de comparar
-      projeto.titulo
-        .toLowerCase()
-        .replace(/-/g, "")
-        .includes(termo)
+      projeto.titulo.toLowerCase().replace(/-/g, "").includes(termo)
     )
     .forEach(projeto => {
       const div = document.createElement("div");
@@ -55,7 +52,7 @@ function mostrarProjetos(filtro = "") {
     // Filtro ao digitar
 
     const inputFiltro = document.getElementById("filtro");
-    inputFiltro.addEventListener("input",() => {
+    inputFiltro.addEventListener("input", () => {
         mostrarProjetos(inputFiltro.value);
     });
 
