@@ -20,7 +20,7 @@ const projetos = [
   {
     titulo: "To-Do-List",
     descricao: "Aplicação para gerenciar tarefas, com salvamento local.",
-    link: "projetos/todo-list/index.html",
+    link: "todo.html",
     detalhes: "Projeto com funcionalidades de adicionar, remover e marcar tarefas como concluídas."
   }
 ];
