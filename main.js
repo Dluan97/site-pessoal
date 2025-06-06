@@ -19,6 +19,13 @@ function mostrarProjetos(filtro = "") {
     });
 }
 
+function navegarPara(id) {
+  const secoes = document.querySelectorAll(".secao");
+  secoes.forEach(secao => {
+    secao.style.display = secao.id === id ? 'block' : 'none';
+  });
+}
+
 // Validação e envio do formulário
 const form = document.getElementById('form-contato');
 const statusEnvio = document.getElementById('status-envio');

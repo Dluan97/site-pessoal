@@ -203,3 +203,24 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+
+nav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+nav button{
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3 ease;
+}
+
+nav button:hover {
+  background-color: #005fa3;
+}
