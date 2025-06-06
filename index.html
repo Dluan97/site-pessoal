@@ -9,10 +9,7 @@
         <header>
             <h1>Olá! Eu sou Dluan</h1>
             <p>Desenvolvedor iniciante buscando experiência com projetos reais.</p>
-        </header>
-
-        <header>
-            <h1>Meu Portfólio</h1>
+            <h2>Meu Portfólio</h2>
             <nav>
                 <button onclick="navegarPara('sobre')">Sobre</button>
                 <button onclick="navegarPara('projetos')">Projetos</button>
@@ -22,57 +19,80 @@
 
         <main>
             <section id="sobre" class="secao">...</section>
+
             <section id="projetos" class="secao" style="display: none;">...</section>
+
             <section id="contato" class="secao" style="display: none;">...</section>
+            
+            <section>
+                <h2>Habilidades</h2>
+                <div class="cards-habilidades">
+                    <div class="card">HTML e CSS</div>
+                    <div class="card">Git e GitHub</div>
+                    <div class="card">Publicação com Netlify</div>
+                    <div class="card">Noções de JavaScript</div>
+                </div>        
+            </section>
+
+            <section class="projeto-destaque">
+                <h2>Projeto em Destaque: To-Do List</h2>
+                <p>Aplicativo de lista de tarefas com categorias, e edição e salvamento local.</p>
+
+                <div class="galeria">
+                    <img src="projetos/todo-list/img1.png" alt="Tela 1" onclick="abrirImagem(this)">
+                    <img src="projetos/todo-list/img2.png" alt="Tela 2" onclick="abrirImagem(this)">
+                    <img src="projetos/todo-list/img3.png" alt="Tela 3" onclick="abrirImagem(this)">
+                </div>
+
+                <!--Imagem em Destaque-->
+                <div id="modal-imagem" class="modal" onclick="fecharImagem()">
+                    <img id="imagem-expandida" src="">
+                </div>
+            </section>
+
+            <section class="meus-projetos">
+                <h2>Meus Projetos</h2>
+
+                <!--CAMPO DE BUSCA-->
+
+                <input type="text" id="filtro" placeholder="Filtrar projetos..." />
+
+                <!--ONDE OS PROJETOS VÃO APARECER-->
+
+                <div id="projetos-container"></div>
+            </section>
+
+            <section>
+                <h2>Contato</h2>
+                <p>Email: dluanlopes9@gmail.com</p>
+            <p>GitHub: <a href="https://github.com/Dluan97" target="_blank">github.com/Dluan97</a></p>
+            </section>
+
+            <section>
+                <h2> Formulário de Contato</h2>
+                <form id="form-contato">
+                    <label for="nome">Nome:</label><br>
+                    <input type="text" id="nome" name="nome" required><br><br>
+
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+
+                    <label for="mensagem">Mensagem:</label><br>
+                    <textarea id="mensagem" name="mensagem" required></textarea><br><br>
+
+                    <button type="submit">Enviar</button>
+                </form>
+                <p id="status-envio"></p>
+            </section>
         </main>
-
-        <section>
-            <h2>Habilidades</h2>
-            <div class="cards-habilidades">
-                <div class="card">HTML e CSS</div>
-                <div class="card">Git e GitHub</div>
-                <div class="card">Publicação com Netlify</div>
-                <div class="card">Noções de JavaScript</div>
-            </div>        
-        </section>
-
-        <section class="meus-projetos">
-            <h2>Meus Projetos</h2>
-
-            <!--CAMPO DE BUSCA-->
-
-            <input type="text" id="filtro" placeholder="Filtrar projetos..." />
-
-            <!--ONDE OS PROJETOS VÃO APARECER-->
-
-            <div id="projetos-container"></div>
-        </section>
-
-        <section>
-            <h2>Contato</h2>
-            <p>Email: dluanlopes9@gmail.com</p>
-           <p>GitHub: <a href="https://github.com/Dluan97" target="_blank">github.com/Dluan97</a></p>
-        </section>
-
-        <section>
-            <h2> Formulário de Contato</h2>
-            <form id="form-contato">
-                <label for="nome">Nome:</label><br>
-                <input type="text" id="nome" name="nome" required><br><br>
-
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required><br><br>
-
-                <label for="mensagem">Mensagem:</label><br>
-                <textarea id="mensagem" name="mensagem" required></textarea><br><br>
-
-                <button type="submit">Enviar</button>
-            </form>
-            <p id="status-envio"></p>
-        </section>
         
         <script src="data.js"></script>
         <script src="main.js"></script>
+
+        <!-- Modal de imagem -->
+<div id="modal-imagem" onclick="fecharImagem()" style="display:none; justify-content:center; align-items:center; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); z-index:9999;">
+  <img id="imagem-expandida" src="" style="max-width:90%; max-height:90%; border-radius:8px;">
+</div>
 
     </body>
 </html>

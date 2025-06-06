@@ -10,8 +10,11 @@ function mostrarProjetos(filtro = "") {
     .forEach(projeto => {
       const div = document.createElement("div");
       div.classList.add("projeto", "fade-in");
+
       div.innerHTML = `
         <h3>${projeto.titulo}</h3>
+       ${projeto.imagem ? `<img src="${projeto.imagem}" alt="${projeto.titulo}" style="max-width:100%; border-radius:6px; margin:10px 0;" onclick="abrirImagem(this)">` : ""}
+
         <p>${projeto.descricao}</p>
         ${projeto.link ? `<a href="${projeto.link}" target="_blank">Ver projeto</a>` : ""}
       `;
@@ -56,3 +59,13 @@ inputFiltro.addEventListener("input", () => {
 
 // Mostrar todos ao carregar
 mostrarProjetos();
+function abrirImagem(img) {
+  const modal = document.getElementById("modal-imagem");
+  const imagemExpandida = document.getElementById("imagem-expandida");
+  imagemExpandida.src = img.src;
+  modal.style.display = "flex";
+}
+
+function fecharImagem() {
+  document.getElementById("modal-imagem").style.display = "none";
+}
